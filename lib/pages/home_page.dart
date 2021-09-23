@@ -20,12 +20,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    var marketJson = await rootBundle.loadString("assets/files/market.json");
-    var decodedData = jsonDecode(marketJson);
+    await Future.delayed(Duration(seconds: 2));
+    final marketJson = await rootBundle.loadString("assets/files/market.json");
+    final decodedData = jsonDecode(marketJson);
     var tokensData = decodedData["tokens"];
     MarketModel.tokens = List.from(tokensData)
-    .map<Token>((token) => Token.fromMap(token))
-    .toList();
+        .map<Token>((token) => Token.fromMap(token))
+        .toList();
     setState(() {});
   }
 
@@ -40,13 +41,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
+        child: (MarketModel.tokens!=null && MarketModel.tokens.isNotEmpty)? ListView.builder(
             itemCount: MarketModel.tokens.length,
             itemBuilder: (context, index) {
               return TokenWidget(
                 token: MarketModel.tokens[index],
               );
-            }),
+            }
+            ): const Center(
+              child: CircularProgressIndicator(),
+            ),
       ),
       drawer: const MyDrawer(),
     );
