@@ -1,4 +1,6 @@
+import 'package:bitstone/models/market.dart';
 import 'package:bitstone/widgets/drawer.dart';
+import 'package:bitstone/widgets/token_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,6 +9,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final dummyList = List.generate(4, (index) => MarketModel.tokens[0]);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -14,10 +19,15 @@ class HomePage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
         title: const Text("Markets"),
       ),
-      body: Center(
-        child: Container(
-          child: const Text("Welcome to BitStone"),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+            itemCount: dummyList.length,
+            itemBuilder: (context, index) {
+              return TokenWidget(
+                token: dummyList[index],
+              );
+            }),
       ),
       drawer: const MyDrawer(),
     );
