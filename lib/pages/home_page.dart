@@ -9,7 +9,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("BitStone"),
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text("Markets"),
       ),
       body: Center(
         child: Container(
