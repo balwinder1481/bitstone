@@ -43,12 +43,43 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: (MarketModel.tokens != null && MarketModel.tokens.isNotEmpty)
-            ? ListView.builder(
-                itemCount: MarketModel.tokens.length,
-                itemBuilder: (context, index) => TokenWidget(
-                  token: MarketModel.tokens[index],
+            ? GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
                 ),
+                itemBuilder: (context, index) {
+                  final token = MarketModel.tokens[index];
+                  return Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: GridTile(
+                        header: Container(
+                          child: Text(
+                            token.name,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          padding: const EdgeInsets.all(12),
+                          decoration: const BoxDecoration(
+                            color: Colors.deepPurple,
+                          ),
+                        ),
+                        child: Image.network(token.image),
+                        footer: Text(
+                          token.price.toString(),
+                        ),
+                      ));
+                },
+                itemCount: MarketModel.tokens.length,
               )
+            // ListView.builder(
+            //     itemCount: MarketModel.tokens.length,
+            //     itemBuilder: (context, index) => TokenWidget(
+            //       token: MarketModel.tokens[index],
+            //     ),
+            //   )
             : const Center(
                 child: CircularProgressIndicator(),
               ),

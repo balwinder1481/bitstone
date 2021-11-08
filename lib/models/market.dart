@@ -2,7 +2,14 @@ import 'dart:convert';
 
 
 class MarketModel {
- static List<Token> tokens = [];
+ static List<Token> tokens = [
+   Token(
+     id: 1, 
+     name: "BitStone", 
+     symbol: "BTN", 
+     price: 1, 
+     image: "https://i.ibb.co/zhYFCC9/logo.png")
+  ];
 }
 
 class Token {
