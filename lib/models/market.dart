@@ -1,15 +1,7 @@
 import 'dart:convert';
 
-
 class MarketModel {
- static List<Token> tokens = [
-   Token(
-     id: 1, 
-     name: "BitStone", 
-     symbol: "BTN", 
-     price: 1, 
-     image: "https://i.ibb.co/zhYFCC9/logo.png")
-  ];
+  static List<Token> tokens = [];
 }
 
 class Token {
@@ -26,8 +18,6 @@ class Token {
     required this.price,
     required this.image,
   });
-
-  
 
   Token copyWith({
     int? id,
@@ -77,21 +67,21 @@ class Token {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is Token &&
-      other.id == id &&
-      other.name == name &&
-      other.symbol == symbol &&
-      other.price == price &&
-      other.image == image;
+        other.id == id &&
+        other.name == name &&
+        other.symbol == symbol &&
+        other.price == price &&
+        other.image == image;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      symbol.hashCode ^
-      price.hashCode ^
-      image.hashCode;
+        name.hashCode ^
+        symbol.hashCode ^
+        price.hashCode ^
+        image.hashCode;
   }
 }

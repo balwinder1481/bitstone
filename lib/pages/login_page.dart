@@ -15,15 +15,15 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async {
-    if(_formKey.currentState!.validate()){
-    setState(() {
-      changeButton = true;
-    });
-    await Future.delayed(const Duration(seconds: 1));
-    await Navigator.pushNamed(context, MyRoutes.homeRoute);
-    setState(() {
-      changeButton = false;
-    });
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        changeButton = true;
+      });
+      await Future.delayed(const Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      setState(() {
+        changeButton = false;
+      });
     }
   }
 
@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
               width: 300,
               fit: BoxFit.scaleDown,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Username can not be blank";
-                        } 
+                        }
                         return null;
                       },
                       onChanged: (value) {
@@ -84,11 +84,10 @@ class _LoginPageState extends State<LoginPage> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Password can not be blank";
-                        }
-                       else if (value.length<6) {
+                        } else if (value.length < 6) {
                           return "Password should be atleat 6 characters";
                         }
-                        
+
                         return null;
                       },
                     ),
@@ -107,11 +106,11 @@ class _LoginPageState extends State<LoginPage> {
                           height: 50,
                           alignment: Alignment.center,
                           child: changeButton
-                              ? Icon(
+                              ? const Icon(
                                   Icons.done,
                                   color: Colors.white,
                                 )
-                              : Text(
+                              : const Text(
                                   "Login",
                                   style: TextStyle(
                                       color: Colors.white,
