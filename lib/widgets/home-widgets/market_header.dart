@@ -1,4 +1,3 @@
-import 'package:bitstone/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -10,7 +9,8 @@ class MarketHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        "Markets".text.xl2.bold.color(MyTheme.darkBluishColor).make(),
+        // ignore: deprecated_member_use
+        "Markets".text.xl2.bold.color(context.theme.accentColor).make(),
       ],
     );
   }

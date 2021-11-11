@@ -1,7 +1,6 @@
 import 'package:bitstone/models/market.dart';
 import 'package:bitstone/widgets/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
   final Token market;
@@ -17,14 +16,9 @@ class HomeDetailPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Hero(
-              tag: Key(market.id.toString()),
-              child: Image.network(market.image),
-            ),
-            Expanded(
-                child: Container(
+            Container(
               color: Colors.red,
-            ))
+            )
           ],
         ),
       ),

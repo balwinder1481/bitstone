@@ -16,13 +16,13 @@ class TokenWidget extends StatelessWidget {
     return Card(
       child: ListTile(
         onTap: () {
-          print("${token.name} clicked");
+          //print("${token.name} clicked");
         },
         leading: Image.network(token.image),
         title: Text(token.name),
         subtitle: Text(token.symbol),
         trailing: Text(
-          "\$${token.price}",
+          "\$${token.current_price.toDouble().toString()}",
           textScaleFactor: 1.5,
           style: const TextStyle(
             color: Colors.deepPurple,

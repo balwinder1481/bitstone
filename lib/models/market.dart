@@ -5,53 +5,53 @@ class MarketModel {
 }
 
 class Token {
-  final int id;
   final String name;
   final String symbol;
-  final num price;
   final String image;
-
+  final num current_price;
+  final num price_change_percentage_24h;
   Token({
-    required this.id,
     required this.name,
     required this.symbol,
-    required this.price,
     required this.image,
+    required this.current_price,
+    required this.price_change_percentage_24h,
   });
 
   Token copyWith({
-    int? id,
     String? name,
     String? symbol,
-    num? price,
     String? image,
+    num? current_price,
+    num? price_change_percentage_24h,
   }) {
     return Token(
-      id: id ?? this.id,
       name: name ?? this.name,
       symbol: symbol ?? this.symbol,
-      price: price ?? this.price,
       image: image ?? this.image,
+      current_price: current_price ?? this.current_price,
+      price_change_percentage_24h:
+          price_change_percentage_24h ?? this.price_change_percentage_24h,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'name': name,
       'symbol': symbol,
-      'price': price,
       'image': image,
+      'current_price': current_price,
+      'price_change_percentage_24h': price_change_percentage_24h,
     };
   }
 
   factory Token.fromMap(Map<String, dynamic> map) {
     return Token(
-      id: map['id'],
       name: map['name'],
       symbol: map['symbol'],
-      price: map['price'],
       image: map['image'],
+      current_price: map['current_price'],
+      price_change_percentage_24h: map['price_change_percentage_24h'],
     );
   }
 
@@ -61,7 +61,7 @@ class Token {
 
   @override
   String toString() {
-    return 'Token(id: $id, name: $name, symbol: $symbol, price: $price, image: $image)';
+    return 'Token(name: $name, symbol: $symbol, image: $image, current_price: $current_price, price_change_percentage_24h: $price_change_percentage_24h)';
   }
 
   @override
@@ -69,19 +69,19 @@ class Token {
     if (identical(this, other)) return true;
 
     return other is Token &&
-        other.id == id &&
         other.name == name &&
         other.symbol == symbol &&
-        other.price == price &&
-        other.image == image;
+        other.image == image &&
+        other.current_price == current_price &&
+        other.price_change_percentage_24h == price_change_percentage_24h;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^
-        name.hashCode ^
+    return name.hashCode ^
         symbol.hashCode ^
-        price.hashCode ^
-        image.hashCode;
+        image.hashCode ^
+        current_price.hashCode ^
+        price_change_percentage_24h.hashCode;
   }
 }

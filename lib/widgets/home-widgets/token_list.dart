@@ -1,7 +1,6 @@
 import 'package:bitstone/models/market.dart';
 import 'package:bitstone/pages/home_detail_page.dart';
 import 'package:bitstone/widgets/home-widgets/token_image.dart';
-import 'package:bitstone/widgets/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -51,7 +50,7 @@ class TokenMarket extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                market.name.text.color(MyTheme.darkBluishColor).make(),
+                market.name.text.color(context.accentColor).make(),
                 market.symbol.text.bold.make(),
               ],
             ),
@@ -61,7 +60,7 @@ class TokenMarket extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                "\$${market.price}".text.lg.bold.make(),
+                "\$${market.current_price.toDouble().toString()}".text.lg.bold.make(),
               ],
             ),
           ),
@@ -70,11 +69,11 @@ class TokenMarket extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              market.id.text.lg.make(),
+              market.price_change_percentage_24h.toDouble().toString().text.lg.make(),
             ],
           ))
         ],
       ),
-    ).white.rounded.square(90).make().py4();
+    ).color(context.cardColor).rounded.square(90).make().py4();
   }
 }
