@@ -28,9 +28,9 @@ class _HomePageState extends State<HomePage> {
     final response = await http.get(Uri.parse(url));
     final marketJson = response.body;
     final decodedData = jsonDecode(marketJson);
-    var tokensData = decodedData[0]['tokens'];
-    print(tokensData);
-    MarketModel.tokens = List.from(tokensData)
+    // var tokensData = Token.fromJson(decodedData);
+    // print(tokensData);
+    MarketModel.tokens = List.from(decodedData)
         .map<Token>((token) => Token.fromMap(token))
         .toList();
     setState(() {});
